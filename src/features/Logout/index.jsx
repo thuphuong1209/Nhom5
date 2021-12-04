@@ -4,12 +4,12 @@ import { useHistory } from "react-router-dom";
 const Logout = () => {
   let history = useHistory();
 
-  useMemo(() => {
+  useEffect(() => {
     if (!localStorage.getItem("token")) history.push("/");
   }, []);
 
   useEffect(() => {
-    localStorage.removeItem("token");
+    localStorage.clear();
     history.push("/");
   }, []);
   return <></>;

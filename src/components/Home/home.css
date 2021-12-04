@@ -1,0 +1,16 @@
+.infomation {
+    text-align: left;
+    justify-items: left;
+    font-size: 20px;
+    font-style: normal;
+}
+
+.h2 {
+    font-style: initial;
+    font-size: 25px;
+    font-weight: bolder;
+}
+h1 {
+    font-style: initial;
+    font-size: 20px;
+}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { useHistory } from "react-router-dom";
-import { Table, Button, Modal, Card, Form } from "react-bootstrap";
+import { Table, Button, Modal, Card, Form, Alert } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 
 const ListBook = () => {
@@ -37,7 +38,7 @@ const ListBook = () => {
       });
   };
 
-  useMemo(() => {
+  useEffect(() => {
     if (!localStorage.getItem("token")) history.push("/");
   }, []);
 
@@ -77,9 +78,32 @@ const ListBook = () => {
     setShowDelete(true);
     setTempBookId(bookId);
   };
+  console.log(tempArray, tempBookId)
 
-  const handleBorrow = () => {
-    // NOT HAS API
+  const handleBorrow = async () => {
+    try {
+      const data = {
+        userId: localStorage.getItem("userId"),
+        statusBorrow: "NOT_YET",
+        bookId: tempBookId,
+        quantity: 1,
+        date: new Date(),
+        payDate: null
+      }
+      const response = await axios.post("http://localhost:8080/borrow", data
+        , {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        });
+      if (response.data) {
+        toast.success("Muợn sách thành công");
+        handleCloseDetail();
+      }
+    } catch (error) {
+      console.log(error)
+    }
+
   };
 
   const handleUpdate = () => {
@@ -120,7 +144,8 @@ const ListBook = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
+      <ToastContainer />
       <Table striped bordered hover className="align-middle text-center">
         <thead>
           <tr>
@@ -267,7 +292,7 @@ const ListBook = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-    </>
+    </React.Fragment>
   );
 };
 

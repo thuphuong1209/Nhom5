@@ -52,6 +52,8 @@ function Register() {
 
 
   const submitSignup = () => {
+
+    console.log("run subimit");
     axios.post("http://localhost:8080/user", {
       "userName": username,
       "password": password,
@@ -71,7 +73,10 @@ function Register() {
   }
 
   return (
-    <form>
+    <form onSubmit={(e) => {
+      e.preventDefault();
+      submitSignup();
+    }}>
       <div className="container">
 
         <div className="form-group">
@@ -121,10 +126,7 @@ function Register() {
             <option value="false">Nu</option>
           </select>
         </div>
-
-        <Button variant="primary" type="submit">
-          Đăng Kí
-        </Button>
+        <button type='submit' className="btn btn-primary" >Đăng Kí</button>
       </div>
     </form >
 

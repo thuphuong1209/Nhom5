@@ -1,8 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, useHistory } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import 'react-toastify/dist/ReactToastify.css';
 import Header from "./components/Header";
 import AddAccount from "./features/AddAccount";
 import AddBook from "./features/AddBook";
@@ -17,12 +17,19 @@ import Login from "./features/Login";
 import Register from "./features/Register";
 import Logout from "./features/Logout";
 import Footer from "./components/Footer";
+import Home from "./components/Home";
 
 const App = () => {
+  const [username, setUserName] = React.useState("");
+  React.useEffect(() => {
+    const name = localStorage.getItem("name");
+    console.log("run")
+    setUserName(name);
+  }, [window.location.pathname])
   return (
     <Container>
       <Router>
-        <Header />
+        <Header username={username} setUserName={setUserName} />
         <Switch>
           <Route exact path="/">
             <Login />
@@ -60,10 +67,13 @@ const App = () => {
           <Route path="/logout">
             <Logout />
           </Route>
+          <Route path="/home">
+            <Home />
+          </Route>
         </Switch>
         <Footer />
       </Router>
-    </Container>
+    </Container >
   );
 };
 
