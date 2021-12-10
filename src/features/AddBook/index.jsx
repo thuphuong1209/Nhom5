@@ -9,6 +9,7 @@ const AddBook = () => {
   const author = useRef();
   const quantity = useRef();
   const type = useRef();
+  const detail = useRef();
   const url = useRef();
 
   const handleAddBook = () => {
@@ -18,6 +19,7 @@ const AddBook = () => {
         "author": author.current.value,
         "quantity": quantity.current.value,
         "type": type.current.value,
+        "detail": detail.current.value,
         "url": url.current.value
       }, {
         headers: {
@@ -49,10 +51,12 @@ const AddBook = () => {
             ref={quantity}
           />
         </Form.Group>
+
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label>Thể loại</Form.Label>
+          <Form.Label>Nội dung</Form.Label>
           <Form.Control ref={type} />
         </Form.Group>
+
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Url</Form.Label>
           <Form.Control ref={url} />

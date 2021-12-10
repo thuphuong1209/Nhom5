@@ -214,6 +214,7 @@ const ListBook = () => {
               <small className="text-muted">
                 Tác giả: {tempArray.author} - Số lượng:
                 {tempArray.quantity}
+
               </small>
             </Card.Footer>
           </Card>
