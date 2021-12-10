@@ -26,6 +26,7 @@ const Login = () => {
             localStorage.setItem("userId", res.data.userId);
             localStorage.setItem("role", res.data.role);
             localStorage.setItem("name", res.data.name);
+            console.log("run local");
             handleLogin({
               ...res.data,
               isLoggedIn: true,

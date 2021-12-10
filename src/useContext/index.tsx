@@ -33,9 +33,21 @@ export const Global: React.FC = ({ children }) => {
   const handleLogin = (params: IUserState) => {
     setState({ ...params, isLoggedIn: true });
   };
-
+  React.useEffect(() => {
+    const token = localStorage.getItem("token") || "";
+    const userId = localStorage.getItem("userId") || "";
+    const role = localStorage.getItem("role") || "";
+    const name = localStorage.getItem("name") || "";
+    if (token) {
+      setState({ ...state, token, userId, role, name, isLoggedIn: true });
+    } else {
+      setState({ ...state, isLoggedIn: false });
+    }
+  }),
+    [state];
   const handleLogout = () => {
     setState({ ...initState });
+    localStorage.clear();
   };
   const value = {
     ...state,
