@@ -28,7 +28,7 @@ function Register() {
       "phone": phone,
       "birthDate": birthday,
       "gender": gender,
-      "role": 1
+      "role": 0
     })
       .then(() => {
         history.push("/");
@@ -73,7 +73,7 @@ function Register() {
         </div>
         <div className="form-group">
           <label htmlFor="address"> Địa chỉ: </label>
-          <input name="address" type="text" placeholder="Nhập địa chỉ" className="form-control"
+          <input name="address" type="text" placeholder="name@email.com" className="form-control"
             onChange={e => setAddress(e.target.value)}
           />
         </div>

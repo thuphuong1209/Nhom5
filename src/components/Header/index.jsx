@@ -105,26 +105,6 @@ const Header = () => {
             </NavDropdown>
           </Nav.Link>
           <Nav.Link eventKey={1}>
-            <NavDropdown
-              title="Quản lí người mượn"
-              id="collasible-nav-dropdown"
-            >
-              {isLoggedIn && isAdmin ? (
-                <NavDropdown.Item>
-                  <Link to="/list-borrow" className="text-decoration-none">
-                    Danh sách người mượn
-                  </Link>
-                </NavDropdown.Item>
-              ) : null}
-              <NavDropdown.Divider />
-              <NavDropdown.Item>
-                <Link to="/search-borrow" className="text-decoration-none">
-                  Tìm kiếm mượn sách
-                </Link>
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav.Link>
-          <Nav.Link eventKey={1}>
             <NavDropdown title="More..." id="collasible-nav-dropdown">
               <NavDropdown.Item onClick={handleLogout}>
                 <Link to="/" className="text-decoration-none">

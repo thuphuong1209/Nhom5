@@ -41,20 +41,24 @@ const AddBook = () => {
           <Form.Label>Tên sách</Form.Label>
           <Form.Control ref={nameBook} />
         </Form.Group>
+
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Tác giả</Form.Label>
           <Form.Control ref={author} />
         </Form.Group>
+
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Số lượng</Form.Label>
-          <Form.Control
-            ref={quantity}
-          />
+          <Form.Control ref={quantity} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label>Nội dung</Form.Label>
+          <Form.Label>Thể loại</Form.Label>
           <Form.Control ref={type} />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+          <Form.Label>Nội dung</Form.Label>
+          <Form.Control ref={detail} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
