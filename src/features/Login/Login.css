@@ -1,0 +1,23 @@
+.mb-3 {
+    font-size: x-large;
+    justify-content: center;
+    color: rgb(73, 125, 194);
+    font-weight: lighter;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.text-muted {
+    color: rgb(23, 85, 161);
+    font-weight: 100;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h3 {
+    display: block;
+    color: rgb(39, 96, 172);
+    font-style: normal;
+    font-size: 42px;
+    text-shadow: rgb(54, 54, 212) -1px -2px 0.5em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.bt-1 {
+    font-size: large;
+}

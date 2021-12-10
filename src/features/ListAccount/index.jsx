@@ -46,24 +46,30 @@ const ListAccount = () => {
     <Table striped bordered hover>
       <thead>
         <tr>
-          <th>Stt</th>
           <th>Họ và tên</th>
           <th>Tên đăng nhập</th>
+          <th>Địa chỉ</th>
           <th>Số điện thoại</th>
+          <th>Ngày sinh</th>
+          <th>Giới tính</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
+          <td>Thu Phuong</td>
+          <td>Phuong1234</td>
+          <td>jgjygtjuy</td>
           <td>01659784</td>
+          <td>12/12/2020</td>
+          <td>Nu</td>
         </tr>
         <tr>
-          <td>2</td>
-          <td>Mark</td>
-          <td>Otto</td>
+          <td>Le Hien</td>
+          <td>Hien123</td>
+          <td>bjhkh</td>
           <td>012658578</td>
+          <td>10/11/2020</td>
+          <td>Nam</td>
         </tr>
       </tbody>
     </Table>

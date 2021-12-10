@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import axios from "axios";
+import './Login.css';
 
 const Login = () => {
   let history = useHistory();
@@ -58,7 +59,7 @@ const Login = () => {
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
-        <Button variant="primary" onClick={login}>
+        <Button className="bt-1" variant="primary" onClick={login}>
           Đăng nhập
         </Button>
       </Form>

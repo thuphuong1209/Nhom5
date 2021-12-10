@@ -1,42 +1,8 @@
-/*import React from "react";
-import { Button, Form } from "react-bootstrap";
 
-const Register = () => {
-  return (
-    <div className="border px-5 py-5 mt-1 ">
-      <div class="mb-3 text-center">
-        <h3>ĐĂNG KÍ</h3>
-      </div>
-      <Form>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Tài khoản</Form.Label>
-          <Form.Control placeholder="Enter username" />
-          <Form.Text className="text-muted">
-            Tài khoản không chứa kí tự đặc biệt
-          </Form.Text>
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Mật khẩu</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Đăng Kí
-        </Button>
-      </Form>
-    </div>
-  );
-};
-
-export default Register;
-*/
 import React, { Component, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from "axios";
-import { Button, Form } from "react-bootstrap";
+import './Register.css';
 
 
 function Register() {
@@ -73,11 +39,16 @@ function Register() {
   }
 
   return (
+
     <form onSubmit={(e) => {
       e.preventDefault();
       submitSignup();
     }}>
       <div className="container">
+        <div class="mb-3 text-center">
+
+          <h3>ĐĂNG KÍ</h3>
+        </div>
 
         <div className="form-group">
           <label htmlFor="name"> Họ và tên: </label>

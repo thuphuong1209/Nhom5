@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import './Header.css';
 
 const Header = ({ username, setUserName }) => {
   return (
@@ -8,12 +9,14 @@ const Header = ({ username, setUserName }) => {
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Container>
           <Navbar.Brand href="#home" className="fw-bold">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Logo_Kinh_t%E1%BA%BF_%C4%90%C3%A0_N%E1%BA%B5ng.jpg"
+              width="50" height="50" />
             HỆ THỐNG QUẢN LÍ THƯ VIỆN
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto"></Nav>
-            <Nav>
+            <Nav bg="dark">
               <Nav.Link eventKey={1}>
                 <NavDropdown title={username} id="collasible-nav-dropdown">
                   <NavDropdown.Item>
@@ -61,13 +64,6 @@ const Header = ({ username, setUserName }) => {
             <NavDropdown.Item>
               <Link to="/list-account" className="text-decoration-none">
                 Danh sách tài khoản
-              </Link>
-            </NavDropdown.Item>
-            <NavDropdown.Divider />
-
-            <NavDropdown.Item>
-              <Link to="/search-account" className="text-decoration-none">
-                Tìm kiếm tài khoản
               </Link>
             </NavDropdown.Item>
           </NavDropdown>
