@@ -39,7 +39,15 @@ export const Global: React.FC = ({ children }) => {
     const role = localStorage.getItem("role") || "";
     const name = localStorage.getItem("name") || "";
     if (token) {
-      setState({ ...state, token, userId, role, name, isLoggedIn: true });
+      setState({
+        ...state,
+        token,
+        userId,
+        role,
+        name,
+        isLoggedIn: true,
+        isAdmin: role === "admin",
+      });
     } else {
       setState({ ...state, isLoggedIn: false });
     }
