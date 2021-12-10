@@ -43,8 +43,8 @@ export const Global: React.FC = ({ children }) => {
     } else {
       setState({ ...state, isLoggedIn: false });
     }
-  }),
-    [state];
+  }, []);
+
   const handleLogout = () => {
     setState({ ...initState });
     localStorage.clear();

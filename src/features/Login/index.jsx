@@ -12,21 +12,17 @@ const Login = () => {
   const { handleLogin } = React.useContext(GlobalContext);
   const login = async () => {
     if (userName.current.value !== "" && password.current.value !== "") {
-      const passwordDB = window.btoa(
-        userName.current.value + ":" + password.current.value
-      );
       await axios
         .post("http://localhost:8080/authenticate", {
           username: userName.current.value,
-          password: passwordDB,
+          password: password.current.value,
         })
         .then((res) => {
-          if (res.data.token) {
+          if (res.data) {
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("userId", res.data.userId);
             localStorage.setItem("role", res.data.role);
             localStorage.setItem("name", res.data.name);
-            console.log("run local");
             handleLogin({
               ...res.data,
               isLoggedIn: true,

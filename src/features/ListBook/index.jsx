@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Table, Button, Modal, Card, Form, Alert } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
+import { GlobalContext } from "../../useContext";
 
 const ListBook = () => {
   let history = useHistory();
@@ -15,6 +16,7 @@ const ListBook = () => {
   const [showUpdate, setShowUpdate] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
 
+  const { isAdmin, isLoggedIn } = React.useContext(GlobalContext);
   const title = useRef();
   const author = useRef();
   const quantity = useRef();
@@ -78,7 +80,7 @@ const ListBook = () => {
     setShowDelete(true);
     setTempBookId(bookId);
   };
-  console.log(tempArray, tempBookId)
+  console.log(tempArray, tempBookId);
 
   const handleBorrow = async () => {
     try {
@@ -88,22 +90,20 @@ const ListBook = () => {
         bookId: tempBookId,
         quantity: 1,
         date: new Date(),
-        payDate: null
-      }
-      const response = await axios.post("http://localhost:8080/borrow", data
-        , {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-        });
+        payDate: null,
+      };
+      const response = await axios.post("http://localhost:8080/borrow", data, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
       if (response.data) {
         toast.success("Muợn sách thành công");
         handleCloseDetail();
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-
   };
 
   const handleUpdate = () => {
@@ -174,24 +174,28 @@ const ListBook = () => {
                   <i className="fas fa-bars"></i>
                 </Button>
               </td>
-              <td>
-                <Button
-                  variant="warning"
-                  size="sm"
-                  onClick={() => handleShowUpdate(item.bookId)}
-                >
-                  <i className="fas fa-pen-square"></i>
-                </Button>
-              </td>
-              <td>
-                <Button
-                  variant="danger"
-                  size="sm"
-                  onClick={() => handleShowDelte(item.bookId)}
-                >
-                  <i className="fas fa-trash-alt fa-1x"></i>
-                </Button>
-              </td>
+              {isAdmin ? (
+                <React.Fragment>
+                  <td>
+                    <Button
+                      variant="warning"
+                      size="sm"
+                      onClick={() => handleShowUpdate(item.bookId)}
+                    >
+                      <i className="fas fa-pen-square"></i>
+                    </Button>
+                  </td>
+                  <td>
+                    <Button
+                      variant="danger"
+                      size="sm"
+                      onClick={() => handleShowDelte(item.bookId)}
+                    >
+                      <i className="fas fa-trash-alt fa-1x"></i>
+                    </Button>
+                  </td>
+                </React.Fragment>
+              ) : null}
             </tr>
           ))}
         </tbody>
@@ -214,7 +218,6 @@ const ListBook = () => {
               <small className="text-muted">
                 Tác giả: {tempArray.author} - Số lượng:
                 {tempArray.quantity}
-
               </small>
             </Card.Footer>
           </Card>
